@@ -26,6 +26,8 @@ import wayfaeres from './assets/img/head-accessories/head-accessories-1.png';
 import emeraldEarings from './assets/img/head-accessories/head-accessories-2.png';
 import hat1 from './assets/img/head-accessories/hat-1.png'
 
+import arms1 from './assets/img/arms/arms-1.png';
+
 function App() {
   const [leafyBody, setLeafyBody] = useState(body1);
   const [leafyEyes, setLeafyEyes] = useState(eyes1);
@@ -89,7 +91,7 @@ function App() {
     }
   }
 
-  const saveLeafy = () => {
+  const save = () => {
     let leafy = {
       configuration: {
         body: leafyBody,
@@ -107,12 +109,9 @@ function App() {
       console.log(canvas.toDataURL("image/png"));
 
       leafy.image = canvas.toDataURL("image/png");
-
-      console.log(leafy);
-      //saveLeafy();
+      
       saveLeafy(leafy)
-  });
-
+    });
   }
 
   return (
@@ -140,7 +139,7 @@ function App() {
 
             <Panel title="Pants" items={pantsAssets} selectItem={selectItem}/>
 
-            <div className="bg-green-500 text-white text-center rounded py-5" onClick={()=>saveLeafy()}>
+            <div className="bg-green-500 text-white text-center rounded py-5" onClick={()=>save()}>
               <span className="text-3xl">Save</span>
             </div>
           </div>
