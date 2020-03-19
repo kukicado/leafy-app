@@ -25,11 +25,11 @@ import wayfaeres from './assets/img/head-accessories/head-accessories-1.png';
 import emeraldEarings from './assets/img/head-accessories/head-accessories-2.png';
 import hat1 from './assets/img/head-accessories/hat-1.png'
 
-// Arms Assets
+// Arm assets
 import arms1 from './assets/img/arms/arms-1.png';
 
-// Legs Assets
-import legs1 from './assets/img/legs/legs-1.png';
+// Pants assets
+import pants1 from './assets/img/legs/legs-1.png';
 
 function App() {
   const [leafies, setLeafs] = useState([]);
@@ -49,7 +49,7 @@ function App() {
   let armsAssets = [arms1];
   let hairAssets = [];
   let shirtAssets = [];
-  let pantsAssets = [legs1];
+  let pantsAssets = [pants1];
 
   useEffect(() => {
     if (client.auth.user) {

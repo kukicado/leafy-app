@@ -1,3 +1,3 @@
-let STITCH_CONFIG = "main-brodv";
+let STITCH_CONFIG = "YOUR-ID-HERE";
 
 export {STITCH_CONFIG}
