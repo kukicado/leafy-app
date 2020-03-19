@@ -3,6 +3,8 @@ import { client, getLeafies, getSingleLeafy, saveLeafy } from "./Stitch";
 import {
   AnonymousCredential,
 } from "mongodb-stitch-browser-sdk";
+import html2canvas from 'html2canvas';
+import domtoimage from 'dom-to-image';
 
 import './assets/main.css'
 
@@ -89,17 +91,28 @@ function App() {
 
   const saveLeafy = () => {
     let leafy = {
-      body: leafyBody,
-      eyes: leafyEyes,
-      mouth: leafyMouth,
-      headAccessory: leafyHeadAccessory,
-      arms: leafyArms,
-      hair: leafyHair,
-      shirt: leafyShirt,
-      pants: leafyPants
+      configuration: {
+        body: leafyBody,
+        eyes: leafyEyes,
+        mouth: leafyMouth,
+        headAccessory: leafyHeadAccessory,
+        arms: leafyArms,
+        hair: leafyHair,
+        shirt: leafyShirt,
+        pants: leafyPants
+      }
     }
+    
+    html2canvas(document.getElementById("leafy")).then(function(canvas) {
+      console.log(canvas.toDataURL("image/png"));
 
-    console.log(leafy);
+      leafy.image = canvas.toDataURL("image/png");
+
+      console.log(leafy);
+      //saveLeafy();
+      saveLeafy(leafy)
+  });
+
   }
 
   return (
@@ -191,7 +204,7 @@ const Preview = ({leafyBody, leafyEyes, leafyMouth, leafyHeadAccessory, leafyArm
 
   return (
     <div>
-      <div className="text-center relative h-leafy w-leafy">
+      <div id="leafy" className="text-center relative h-leafy w-leafy">
       <div className="body">
           <img className="absolute" src={leafyBody}/>
         </div>

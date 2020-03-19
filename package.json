@@ -7,8 +7,11 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "autoprefixer": "^9.7.4",
+    "dom-to-image": "^2.6.0",
+    "html2canvas": "^1.0.0-rc.5",
     "mongodb-stitch-browser-sdk": "^4.8.0",
     "postcss-cli": "^7.1.0",
+    "puppeteer": "^2.1.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
@@ -36,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jsdom-screenshot": "^3.2.0"
   }
 }
