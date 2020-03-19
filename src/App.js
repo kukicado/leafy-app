@@ -185,6 +185,18 @@ function App() {
     return Math.floor(Math.random() * (max - 0) ) + 0;
   }
 
+  const reset = () => {
+    // Reset Leafy
+    setLeafyBody(body1);
+    setLeafyEyes(eyes1);
+    setLeafyMouth();
+    setLeafyHeadAccessory();
+    setLeafyArms();
+    setLeafyHair();
+    setLeafyShirt();
+    setLeafyPants();
+  }
+
   return (
     <div>
       <Header />
@@ -213,8 +225,11 @@ function App() {
             <div className="bg-green-500 text-white text-center rounded py-5 mb-5" onClick={()=>save()}>
               <span className="text-3xl">Save</span>
             </div>
-            <div className="bg-blue-500 text-white text-center rounded py-2" onClick={()=>lucky()}>
+            <div className="bg-blue-500 text-white text-center rounded py-2 mb-5" onClick={()=>lucky()}>
               <span className="text-xl">I'm Feeling Lucky</span>
+            </div>
+            <div className="bg-red-500 text-white text-center rounded py-2" onClick={()=>reset()}>
+              <span className="">Oh, Crap! Reset!</span>
             </div>
           </div>
         </div>
@@ -242,7 +257,7 @@ const Header = () => {
       <div className="container mx-auto">
         <div className="flex py-4">
           <div className="w-1/3">
-            <h2 className="text-2xl">Leafy Generator | <span className="text-xl">Leafify Yourself</span></h2>
+            <h2 className="text-2xl font-bold">Leafy Generator | <span className="text-xl">Leafify Yourself</span></h2>
           </div>
         </div>
       </div>
