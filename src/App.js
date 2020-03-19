@@ -1,16 +1,34 @@
 import React, {useState, useEffect} from 'react';
 import './assets/main.css'
-import bodyLeaf from './assets/img/body/leaf-1.png';
+
+// Body Assets
+import body1 from './assets/img/body/leaf-1.png';
+
+// Eyes Assets
 import eyes1 from './assets/img/eyes/eyes-1.png';
+
+// Mouth Assets
+
+// Head Accessory Assets
 import wayfaeres from './assets/img/glasses/wayfarers.png';
 import emeraldEarings from './assets/img/earings/emerald-earrings.png';
 
 function App() {
-  const [leafyBody, setLeafyBody] = useState(bodyLeaf);
+  const [leafyBody, setLeafyBody] = useState(body1);
+  const [leafyEyes, setLeafyEyes] = useState(eyes1);
+  const [leafyMouth, setLeafyMouth] = useState();
+  const [leafyHeadAccessory, setLeafyHeadAccessory] = useState();
+  const [leafyHair, setLeafyHair] = useState();
+  const [leafyShirt, setLeafyShirt] = useState();
+  const [leafyPants, setLeafyPants] = useState();
 
-
-  let body = [bodyLeaf];
-  let eyes = [eyes1, emeraldEarings];
+  let bodyAssets = [body1];
+  let eyesAssets = [eyes1];
+  let mouthAssets = []
+  let headAccessoryAssets = [wayfaeres, emeraldEarings];
+  let hairAssets = [];
+  let shirtAssets = [];
+  let pantsAssets = [];
 
   const selectItem = (item, bodyPart) => {
 
@@ -20,8 +38,23 @@ function App() {
         setLeafyBody(item);
         break;
       case 'Eyes':
-        console.log(item);
+        setLeafyEyes(item);
         break;
+      case 'Mouth':
+        setLeafyMouth(item);
+        break;
+      case 'HeadAccessory':
+        setLeafyHeadAccessory(item);
+        break;
+      case 'Hair':
+        setLeafyHair(item);
+        break;
+      case 'Shirt':
+        setLeafyShirt(item);
+        break;
+      case 'Pants':
+        setLeafyPants(item);
+        break;  
     }
   }
 
@@ -31,18 +64,22 @@ function App() {
       <div className="container mx-auto">
         <div className="flex">
           <div className="w-2/3">
-            <Preview leafyBody={leafyBody}/>
+            <Preview leafyBody={leafyBody} leafyEyes={leafyEyes} leafyMouth={leafyMouth} leafyHeadAccessory={leafyHeadAccessory} leafyHair={leafyHair} leafyShirt={leafyShirt} leafyPants={leafyPants} />
           </div>
           <div className="w-1/3">
-            <Panel title="Body" items={body} selectItem={selectItem} />
+            <Panel title="Body" items={bodyAssets} selectItem={selectItem} />
 
-            <Panel title="Eyes" items={eyes} selectItem={selectItem}/>
+            <Panel title="Eyes" items={eyesAssets} selectItem={selectItem}/>
 
-            <Panel title="Hair" items={body} selectItem={selectItem}/>
+            <Panel title="Mouth" items={mouthAssets} selectItem={selectItem}/>
 
-            <Panel title="Shirt" items={body} selectItem={selectItem}/>
+            <Panel title="HeadAccessory" items={headAccessoryAssets} selectItem={selectItem} />
 
-            <Panel title="Pants" items={body} selectItem={selectItem}/>
+            <Panel title="Hair" items={hairAssets} selectItem={selectItem}/>
+
+            <Panel title="Shirt" items={shirtAssets} selectItem={selectItem}/>
+
+            <Panel title="Pants" items={pantsAssets} selectItem={selectItem}/>
           </div>
         </div>
       </div>
@@ -97,16 +134,31 @@ const Panel = ({title, items, selectItem}) => {
 }
 
 
-const Preview = ({leafyBody, leafyEyes}) => {
+const Preview = ({leafyBody, leafyEyes, leafyMouth, leafyHeadAccessory, leafyHair, leafyShirt, leafyPants}) => {
 
   return (
     <div>
       <div className="text-center relative h-leafy w-leafy">
-        <div className="eyes">
-          <img className="" src={leafyEyes} />
+      <div className="body">
+          <img className="absolute" src={leafyBody}/>
         </div>
-        <div className="body">
-          <img className="" src={leafyBody} />
+        <div className="eyes">
+          <img className="absolute" src={leafyEyes} />
+        </div>
+        <div className="eyes">
+          <img className="absolute" src={leafyMouth} />
+        </div>
+        <div className="head-accessory">
+          <img className="absolute" src={leafyHeadAccessory} />
+        </div>
+        <div className="hair">
+          <img className="absolute" src={leafyHair} />
+        </div>
+        <div className="shirt">
+          <img className="absolute" src={leafyShirt} />
+        </div>
+        <div className="pants">
+          <img className="absolute" src={leafyPants} />
         </div>
       </div>
     </div>
