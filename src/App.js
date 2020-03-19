@@ -8,24 +8,28 @@ import body1 from './assets/img/body/leaf-1.png';
 import eyes1 from './assets/img/eyes/eyes-1.png';
 
 // Mouth Assets
+import mouth1 from './assets/img/mouth/mouth-1.png';
 
 // Head Accessory Assets
-import wayfaeres from './assets/img/glasses/wayfarers.png';
-import emeraldEarings from './assets/img/earings/emerald-earrings.png';
+import wayfaeres from './assets/img/head-accessories/wayfarers.png';
+import emeraldEarings from './assets/img/head-accessories/emerald-earrings.png';
+import hat1 from './assets/img/head-accessories/hat-1.png'
 
 function App() {
   const [leafyBody, setLeafyBody] = useState(body1);
   const [leafyEyes, setLeafyEyes] = useState(eyes1);
   const [leafyMouth, setLeafyMouth] = useState();
   const [leafyHeadAccessory, setLeafyHeadAccessory] = useState();
+  const [leafyArms, setLeafyArms] = useState();
   const [leafyHair, setLeafyHair] = useState();
   const [leafyShirt, setLeafyShirt] = useState();
   const [leafyPants, setLeafyPants] = useState();
 
   let bodyAssets = [body1];
   let eyesAssets = [eyes1];
-  let mouthAssets = []
-  let headAccessoryAssets = [wayfaeres, emeraldEarings];
+  let mouthAssets = [mouth1]
+  let headAccessoryAssets = [hat1, wayfaeres, emeraldEarings];
+  let armsAssets = [];
   let hairAssets = [];
   let shirtAssets = [];
   let pantsAssets = [];
@@ -46,6 +50,9 @@ function App() {
       case 'HeadAccessory':
         setLeafyHeadAccessory(item);
         break;
+      case 'Arms':
+        setLeafyArms(item);
+        break;
       case 'Hair':
         setLeafyHair(item);
         break;
@@ -58,13 +65,17 @@ function App() {
     }
   }
 
+  const saveLeafy = () => {
+    console.log("Save Leafy to Database");
+  }
+
   return (
     <div>
       <Header />
       <div className="container mx-auto">
         <div className="flex">
           <div className="w-2/3">
-            <Preview leafyBody={leafyBody} leafyEyes={leafyEyes} leafyMouth={leafyMouth} leafyHeadAccessory={leafyHeadAccessory} leafyHair={leafyHair} leafyShirt={leafyShirt} leafyPants={leafyPants} />
+            <Preview leafyBody={leafyBody} leafyEyes={leafyEyes} leafyMouth={leafyMouth} leafyHeadAccessory={leafyHeadAccessory} leafyArms={leafyArms} leafyHair={leafyHair} leafyShirt={leafyShirt} leafyPants={leafyPants} />
           </div>
           <div className="w-1/3">
             <Panel title="Body" items={bodyAssets} selectItem={selectItem} />
@@ -75,11 +86,17 @@ function App() {
 
             <Panel title="HeadAccessory" items={headAccessoryAssets} selectItem={selectItem} />
 
+            <Panel title="Arms" items={armsAssets} selectItem={selectItem}/>
+
             <Panel title="Hair" items={hairAssets} selectItem={selectItem}/>
 
             <Panel title="Shirt" items={shirtAssets} selectItem={selectItem}/>
 
             <Panel title="Pants" items={pantsAssets} selectItem={selectItem}/>
+
+            <div className="bg-green-500 text-white text-center rounded py-5" onClick={()=>saveLeafy()}>
+              <span className="text-3xl">Save</span>
+            </div>
           </div>
         </div>
       </div>
@@ -134,7 +151,7 @@ const Panel = ({title, items, selectItem}) => {
 }
 
 
-const Preview = ({leafyBody, leafyEyes, leafyMouth, leafyHeadAccessory, leafyHair, leafyShirt, leafyPants}) => {
+const Preview = ({leafyBody, leafyEyes, leafyMouth, leafyHeadAccessory, leafyArms, leafyHair, leafyShirt, leafyPants}) => {
 
   return (
     <div>
@@ -150,6 +167,9 @@ const Preview = ({leafyBody, leafyEyes, leafyMouth, leafyHeadAccessory, leafyHai
         </div>
         <div className="head-accessory">
           <img className="absolute" src={leafyHeadAccessory} />
+        </div>
+        <div className="arms">
+          <img className="absolute" src={leafyArms} />
         </div>
         <div className="hair">
           <img className="absolute" src={leafyHair} />
