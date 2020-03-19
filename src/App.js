@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import './assets/main.css'
-import bodyLeaf from './assets/img/body/leaf.png';
+import bodyLeaf from './assets/img/body/leaf-1.png';
+import eyes1 from './assets/img/eyes/eyes-1.png';
 import wayfaeres from './assets/img/glasses/wayfarers.png';
 import emeraldEarings from './assets/img/earings/emerald-earrings.png';
 
 function App() {
   const [leafyBody, setLeafyBody] = useState(bodyLeaf);
 
-  let body = [wayfaeres, emeraldEarings];
-  let eyes = [emeraldEarings];
+
+  let body = [bodyLeaf];
+  let eyes = [eyes1, emeraldEarings];
 
   const selectItem = (item, bodyPart) => {
 
@@ -66,29 +68,44 @@ const Header = () => {
 
 
 const Panel = ({title, items, selectItem}) => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(()=>{
+    if(title === 'Body'){
+      setOpen(!open);
+    }
+  }, [])
+
+  const toggle = () => {
+    setOpen(!open);
+  }
   return (
     <div className="bg-white shadow-lg mb-5 rounded overflow-hidden">
-      <div className="bg-gray-200 px-5 py-2">
+      <div className="bg-gray-200 px-5 py-2" onClick={()=>toggle()}>
         <span>{title}</span>
       </div>
-      <div className="flex flex-wrap">
+      {open && <div className="flex flex-wrap">
         {items.map(item => (
           <div className="w-1/3 item p-5" onClick={() => selectItem(item, title)}>
             <img src={item} className="w-full" />
           </div>
         ))}
       </div>
+      }
     </div>
   )
 }
 
 
-const Preview = ({leafyBody}) => {
+const Preview = ({leafyBody, leafyEyes}) => {
 
   return (
     <div>
-      <div className="text-center relative h-leafy">
-        <div className="body absolute left-96 bottom-0">
+      <div className="text-center relative h-leafy w-leafy">
+        <div className="eyes">
+          <img className="" src={leafyEyes} />
+        </div>
+        <div className="body">
           <img className="" src={leafyBody} />
         </div>
       </div>

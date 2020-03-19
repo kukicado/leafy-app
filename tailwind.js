@@ -269,7 +269,7 @@ module.exports = {
       ...theme('spacing'),
       full: '100%',
       screen: '100vh',
-      leafy: '800px',
+      leafy: '750px',
     }),
     inset: {
       '0': '0',
@@ -414,6 +414,7 @@ module.exports = {
       '11/12': '91.666667%',
       full: '100%',
       screen: '100vw',
+      leafy: '750px',
     }),
     zIndex: {
       auto: 'auto',
