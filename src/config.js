@@ -1,3 +1,3 @@
-let STITCH_CONFIG = "leafifize-me-lynih";
+let STITCH_CONFIG = "YOUR-ID-HERE";
 
 export {STITCH_CONFIG}

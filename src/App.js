@@ -29,6 +29,9 @@ import hat1 from './assets/img/head-accessories/hat-1.png'
 // Arm assets
 import arms1 from './assets/img/arms/arms-1.png';
 
+// Shirt assets
+import shirt1 from './assets/img/shirt/shirt-1.png';
+
 // Pants assets
 import pants1 from './assets/img/legs/legs-1.png';
 
@@ -48,7 +51,7 @@ function App() {
   let headAccessoryAssets = [hat1, wayfaeres, emeraldEarings];
   let armsAssets = [arms1];
   let hairAssets = [];
-  let shirtAssets = [];
+  let shirtAssets = [shirt1];
   let pantsAssets = [pants1];
 
   useEffect(() => {
