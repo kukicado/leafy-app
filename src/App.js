@@ -4,7 +4,6 @@ import {
   AnonymousCredential,
 } from "mongodb-stitch-browser-sdk";
 import html2canvas from 'html2canvas';
-import domtoimage from 'dom-to-image';
 
 import './assets/main.css'
 
@@ -26,9 +25,14 @@ import wayfaeres from './assets/img/head-accessories/head-accessories-1.png';
 import emeraldEarings from './assets/img/head-accessories/head-accessories-2.png';
 import hat1 from './assets/img/head-accessories/hat-1.png'
 
+// Arms Assets
 import arms1 from './assets/img/arms/arms-1.png';
 
+// Legs Assets
+import legs1 from './assets/img/legs/legs-1.png';
+
 function App() {
+  const [leafies, setLeafs] = useState([]);
   const [leafyBody, setLeafyBody] = useState(body1);
   const [leafyEyes, setLeafyEyes] = useState(eyes1);
   const [leafyMouth, setLeafyMouth] = useState();
@@ -42,19 +46,24 @@ function App() {
   let eyesAssets = [eyes1, eyes2, eyes3, eyes4];
   let mouthAssets = [mouth1, mouth2]
   let headAccessoryAssets = [hat1, wayfaeres, emeraldEarings];
-  let armsAssets = [];
+  let armsAssets = [arms1];
   let hairAssets = [];
   let shirtAssets = [];
-  let pantsAssets = [];
+  let pantsAssets = [legs1];
 
   useEffect(() => {
     if (client.auth.user) {
-      console.log(client.auth.user)
+      getLeafies().then(creations => {
+        console.log(creations);
+        setLeafs(creations);
+      })
     } else {
       client.auth
         .loginWithCredential(new AnonymousCredential())
         .then(user => {
-          console.log(client.auth.user);
+          getLeafies().then(creations => {
+            setLeafs(creations);
+          })
         })
         .catch(console.error);
     }
@@ -105,12 +114,28 @@ function App() {
       }
     }
     
-    html2canvas(document.getElementById("leafy")).then(function(canvas) {
+    html2canvas(document.getElementById("leafy"), {height: 750, width: 750}).then(function(canvas) {
       console.log(canvas.toDataURL("image/png"));
 
       leafy.image = canvas.toDataURL("image/png");
       
-      saveLeafy(leafy)
+      saveLeafy(leafy).then(()=>{
+        getLeafies().then(creations => {
+          setLeafs(creations);
+          
+          // Reset Leafy
+          setLeafyBody(body1);
+          setLeafyEyes(eyes1);
+          setLeafyMouth();
+          setLeafyHeadAccessory();
+          setLeafyArms();
+          setLeafyHair();
+          setLeafyShirt();
+          setLeafyPants();
+
+        })
+      })
+      
     });
   }
 
@@ -143,6 +168,17 @@ function App() {
               <span className="text-3xl">Save</span>
             </div>
           </div>
+        </div>
+      </div>
+    
+      <div className="container mx-auto my-24">
+        <h2 className="text-2xl">Community Created Leafies!</h2>
+        <div className="flex flex-wrap">
+          {leafies && leafies.map(creation => (
+            <div className="w-1/4" key={creation._id.toString()}>
+              <Creation creation={creation} />
+            </div>
+          ))}
         </div>
       </div>
 
@@ -187,8 +223,8 @@ const Panel = ({title, items, selectItem}) => {
       <div className="w-1/3 item p-5 text-center" onClick={() => selectItem("", title)}>
         None
       </div>
-        {items.map(item => (
-          <div className="w-1/3 item p-5" onClick={() => selectItem(item, title)}>
+        {items.map((item, id) => (
+          <div className="w-1/3 item p-5" onClick={() => selectItem(item, title)} key={id}>
             <img src={item} className="w-full" />
           </div>
         ))}
@@ -229,6 +265,14 @@ const Preview = ({leafyBody, leafyEyes, leafyMouth, leafyHeadAccessory, leafyArm
           <img className="absolute" src={leafyPants} />
         </div>
       </div>
+    </div>
+  )
+}
+
+const Creation = ({creation}) => {
+  return (
+    <div className="creation">
+      <img src={creation.image} />
     </div>
   )
 }
