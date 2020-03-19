@@ -1,3 +1,3 @@
-let STITCH_CONFIG = "hackathon-laaji";
+let STITCH_CONFIG = "main-brodv";
 
 export {STITCH_CONFIG}

@@ -142,6 +142,45 @@ function App() {
     });
   }
 
+  const lucky = () => {
+    // get random body
+    let bodyItem = randomNumber(bodyAssets.length);
+    setLeafyBody(bodyAssets[bodyItem]);
+
+    // get random eyes
+    let eyesItem = randomNumber(eyesAssets.length);
+    setLeafyEyes(eyesAssets[eyesItem]);
+
+    // get random mouth
+    let mouthItem = randomNumber(mouthAssets.length);
+    setLeafyMouth(mouthAssets[mouthItem]);
+
+    // get random head accessory
+    let haItem = randomNumber(headAccessoryAssets.length);
+    setLeafyHeadAccessory(headAccessoryAssets[haItem]);
+
+    // get random arms
+    let armsItem = randomNumber(armsAssets.length);
+    setLeafyArms(armsAssets[armsItem]);
+
+    // get random hair
+    let hairItem = randomNumber(hairAssets.length);
+    setLeafyHair(hairAssets[hairItem]);
+
+    // get random shirt
+    let shirtItem = randomNumber(shirtAssets.length);
+    setLeafyShirt(shirtAssets[shirtItem]);
+
+    // get random pants
+    let pantsItem = randomNumber(pantsAssets.length);
+    setLeafyPants(pantsAssets[pantsItem]);
+
+  }
+
+  const randomNumber = (max) => {
+    return Math.floor(Math.random() * (max - 0) ) + 0;
+  }
+
   return (
     <div>
       <Header />
@@ -167,8 +206,11 @@ function App() {
 
             <Panel title="Pants" items={pantsAssets} selectItem={selectItem}/>
 
-            <div className="bg-green-500 text-white text-center rounded py-5" onClick={()=>save()}>
+            <div className="bg-green-500 text-white text-center rounded py-5 mb-5" onClick={()=>save()}>
               <span className="text-3xl">Save</span>
+            </div>
+            <div className="bg-blue-500 text-white text-center rounded py-2" onClick={()=>lucky()}>
+              <span className="text-xl">I'm Feeling Lucky</span>
             </div>
           </div>
         </div>
