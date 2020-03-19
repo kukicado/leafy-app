@@ -24,6 +24,7 @@ import wayfaeres from './assets/img/head-accessories/head-accessories-1.png';
 import emeraldEarings from './assets/img/head-accessories/head-accessories-2.png';
 import hat1 from './assets/img/head-accessories/hat-1.png'
 
+// Arm assets
 import arms1 from './assets/img/arms/arms-1.png';
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
   let eyesAssets = [eyes1, eyes2, eyes3, eyes4];
   let mouthAssets = [mouth1, mouth2]
   let headAccessoryAssets = [hat1, wayfaeres, emeraldEarings];
-  let armsAssets = [];
+  let armsAssets = [arms1];
   let hairAssets = [];
   let shirtAssets = [];
   let pantsAssets = [];
