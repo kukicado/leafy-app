@@ -9,6 +9,7 @@ import './assets/main.css'
 
 // Body Assets
 import body1 from './assets/img/body/leaf-1.png';
+import body2 from './assets/img/body/leaf-2.png';
 
 // Eyes Assets
 import eyes1 from './assets/img/eyes/eyes-1.png';
@@ -32,6 +33,8 @@ import arms2 from './assets/img/arms/arms-2.png';
 
 // Shirt assets
 import shirt1 from './assets/img/shirt/shirt-1.png';
+import shirt2 from './assets/img/shirt/shirt-2.png';
+import shirt3 from './assets/img/shirt/shirt-3.png';
 
 // Pants assets
 import pants1 from './assets/img/legs/legs-1.png';
@@ -48,13 +51,13 @@ function App() {
   const [leafyShirt, setLeafyShirt] = useState();
   const [leafyPants, setLeafyPants] = useState();
 
-  let bodyAssets = [body1];
+  let bodyAssets = [body1, body2];
   let eyesAssets = [eyes1, eyes2, eyes3, eyes4];
   let mouthAssets = [mouth1, mouth2]
   let headAccessoryAssets = [hat1, hat2, wayfaeres, emeraldEarings];
   let armsAssets = [arms1, arms2];
   let hairAssets = [];
-  let shirtAssets = [shirt1];
+  let shirtAssets = [shirt1, shirt2, shirt3];
   let pantsAssets = [pants1, pants2];
 
 
