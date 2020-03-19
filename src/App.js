@@ -1,4 +1,9 @@
 import React, {useState, useEffect} from 'react';
+import { client, getLeafies, getSingleLeafy, saveLeafy } from "./Stitch";
+import {
+  AnonymousCredential,
+} from "mongodb-stitch-browser-sdk";
+
 import './assets/main.css'
 
 // Body Assets
@@ -6,13 +11,17 @@ import body1 from './assets/img/body/leaf-1.png';
 
 // Eyes Assets
 import eyes1 from './assets/img/eyes/eyes-1.png';
+import eyes2 from './assets/img/eyes/eyes-2.png';
+import eyes3 from './assets/img/eyes/eyes-3.png';
+import eyes4 from './assets/img/eyes/eyes-4.png';
 
 // Mouth Assets
 import mouth1 from './assets/img/mouth/mouth-1.png';
+import mouth2 from './assets/img/mouth/mouth-2.png';
 
 // Head Accessory Assets
-import wayfaeres from './assets/img/head-accessories/wayfarers.png';
-import emeraldEarings from './assets/img/head-accessories/emerald-earrings.png';
+import wayfaeres from './assets/img/head-accessories/head-accessories-1.png';
+import emeraldEarings from './assets/img/head-accessories/head-accessories-2.png';
 import hat1 from './assets/img/head-accessories/hat-1.png'
 
 function App() {
@@ -26,13 +35,26 @@ function App() {
   const [leafyPants, setLeafyPants] = useState();
 
   let bodyAssets = [body1];
-  let eyesAssets = [eyes1];
-  let mouthAssets = [mouth1]
+  let eyesAssets = [eyes1, eyes2, eyes3, eyes4];
+  let mouthAssets = [mouth1, mouth2]
   let headAccessoryAssets = [hat1, wayfaeres, emeraldEarings];
   let armsAssets = [];
   let hairAssets = [];
   let shirtAssets = [];
   let pantsAssets = [];
+
+  useEffect(() => {
+    if (client.auth.user) {
+      console.log(client.auth.user)
+    } else {
+      client.auth
+        .loginWithCredential(new AnonymousCredential())
+        .then(user => {
+          console.log(client.auth.user);
+        })
+        .catch(console.error);
+    }
+  }, []);
 
   const selectItem = (item, bodyPart) => {
 
@@ -47,7 +69,7 @@ function App() {
       case 'Mouth':
         setLeafyMouth(item);
         break;
-      case 'HeadAccessory':
+      case 'Head Accessory':
         setLeafyHeadAccessory(item);
         break;
       case 'Arms':
@@ -66,7 +88,18 @@ function App() {
   }
 
   const saveLeafy = () => {
-    console.log("Save Leafy to Database");
+    let leafy = {
+      body: leafyBody,
+      eyes: leafyEyes,
+      mouth: leafyMouth,
+      headAccessory: leafyHeadAccessory,
+      arms: leafyArms,
+      hair: leafyHair,
+      shirt: leafyShirt,
+      pants: leafyPants
+    }
+
+    console.log(leafy);
   }
 
   return (
@@ -84,7 +117,7 @@ function App() {
 
             <Panel title="Mouth" items={mouthAssets} selectItem={selectItem}/>
 
-            <Panel title="HeadAccessory" items={headAccessoryAssets} selectItem={selectItem} />
+            <Panel title="Head Accessory" items={headAccessoryAssets} selectItem={selectItem} />
 
             <Panel title="Arms" items={armsAssets} selectItem={selectItem}/>
 
@@ -139,6 +172,9 @@ const Panel = ({title, items, selectItem}) => {
         <span>{title}</span>
       </div>
       {open && <div className="flex flex-wrap">
+      <div className="w-1/3 item p-5 text-center" onClick={() => selectItem("", title)}>
+        None
+      </div>
         {items.map(item => (
           <div className="w-1/3 item p-5" onClick={() => selectItem(item, title)}>
             <img src={item} className="w-full" />
