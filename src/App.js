@@ -29,6 +29,9 @@ import hat1 from './assets/img/head-accessories/hat-1.png'
 // Arm assets
 import arms1 from './assets/img/arms/arms-1.png';
 
+// Pants assets
+import pants1 from './assets/img/legs/legs-1.png';
+
 function App() {
   const [leafyBody, setLeafyBody] = useState(body1);
   const [leafyEyes, setLeafyEyes] = useState(eyes1);
@@ -46,7 +49,7 @@ function App() {
   let armsAssets = [arms1];
   let hairAssets = [];
   let shirtAssets = [];
-  let pantsAssets = [];
+  let pantsAssets = [pants1];
 
   useEffect(() => {
     if (client.auth.user) {
