@@ -1,3 +1,3 @@
-let STITCH_CONFIG = "YOUR-ID-HERE";
+let STITCH_CONFIG = "hackathon-laaji";
 
 export {STITCH_CONFIG}
