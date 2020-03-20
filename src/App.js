@@ -16,10 +16,25 @@ import eyes1 from './assets/img/eyes/eyes-1.png';
 import eyes2 from './assets/img/eyes/eyes-2.png';
 import eyes3 from './assets/img/eyes/eyes-3.png';
 import eyes4 from './assets/img/eyes/eyes-4.png';
+import eyes5 from './assets/img/eyes/eyes-5.png';
+import eyes6 from './assets/img/eyes/eyes-6.png';
+import eyes7 from './assets/img/eyes/eyes-7.png';
+import eyes8 from './assets/img/eyes/eyes-8.png';
+import eyes9 from './assets/img/eyes/eyes-9.png';
+import eyes10 from './assets/img/eyes/eyes-10.png';
 
 // Mouth Assets
 import mouth1 from './assets/img/mouth/mouth-1.png';
 import mouth2 from './assets/img/mouth/mouth-2.png';
+import mouth3 from './assets/img/mouth/mouth-3.png';
+import mouth4 from './assets/img/mouth/mouth-4.png';
+import mouth5 from './assets/img/mouth/mouth-5.png';
+import mouth6 from './assets/img/mouth/mouth-6.png';
+import mouth7 from './assets/img/mouth/mouth-7.png';
+import mouth8 from './assets/img/mouth/mouth-8.png';
+import mouth9 from './assets/img/mouth/mouth-9.png';
+import mouth10 from './assets/img/mouth/mouth-10.png';
+import mouth11 from './assets/img/mouth/mouth-11.png';
 
 // Head Accessory Assets
 import wayfaeres from './assets/img/head-accessories/head-accessories-1.png';
@@ -30,15 +45,18 @@ import hat2 from './assets/img/head-accessories/hat-2.png'
 // Arm assets
 import arms1 from './assets/img/arms/arms-1.png';
 import arms2 from './assets/img/arms/arms-2.png';
+import arms3 from './assets/img/arms/arms-3.png';
 
 // Shirt assets
 import shirt1 from './assets/img/shirt/shirt-1.png';
 import shirt2 from './assets/img/shirt/shirt-2.png';
 import shirt3 from './assets/img/shirt/shirt-3.png';
+import shirt4 from './assets/img/shirt/shirt-4.png';
 
 // Pants assets
 import pants1 from './assets/img/legs/legs-1.png';
 import pants2 from './assets/img/legs/legs-2.png';
+import pants3 from './assets/img/legs/legs-3.png';
 
 function App() {
   const [leafies, setLeafs] = useState([]);
@@ -52,13 +70,13 @@ function App() {
   const [leafyPants, setLeafyPants] = useState();
 
   let bodyAssets = [body1, body2];
-  let eyesAssets = [eyes1, eyes2, eyes3, eyes4];
-  let mouthAssets = [mouth1, mouth2]
+  let eyesAssets = [eyes1, eyes2, eyes3, eyes4, eyes5, eyes6, eyes7, eyes8, eyes9, eyes10];
+  let mouthAssets = [mouth1, mouth2, mouth3, mouth4, mouth5, mouth6, mouth7, mouth8, mouth9, mouth10, mouth11]
   let headAccessoryAssets = [hat1, hat2, wayfaeres, emeraldEarings];
-  let armsAssets = [arms1, arms2];
+  let armsAssets = [arms1, arms2, arms3];
   let hairAssets = [];
-  let shirtAssets = [shirt1, shirt2, shirt3];
-  let pantsAssets = [pants1, pants2];
+  let shirtAssets = [shirt1, shirt2, shirt3, shirt4];
+  let pantsAssets = [pants1, pants2, pants3];
 
 
   useEffect(() => {
