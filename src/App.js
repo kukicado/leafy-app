@@ -27,6 +27,9 @@ import emeraldEarings from './assets/img/head-accessories/head-accessories-2.png
 import hat1 from './assets/img/head-accessories/hat-1.png'
 import hat2 from './assets/img/head-accessories/hat-2.png'
 
+// Hair assets
+import hair1 from './assets/img/hair/hair-1.png';
+
 // Arm assets
 import arms1 from './assets/img/arms/arms-1.png';
 import arms2 from './assets/img/arms/arms-2.png';
@@ -35,6 +38,7 @@ import arms2 from './assets/img/arms/arms-2.png';
 import shirt1 from './assets/img/shirt/shirt-1.png';
 import shirt2 from './assets/img/shirt/shirt-2.png';
 import shirt3 from './assets/img/shirt/shirt-3.png';
+import shirt4 from './assets/img/shirt/shirt-4.png';
 
 // Pants assets
 import pants1 from './assets/img/legs/legs-1.png';
@@ -56,8 +60,8 @@ function App() {
   let mouthAssets = [mouth1, mouth2]
   let headAccessoryAssets = [hat1, hat2, wayfaeres, emeraldEarings];
   let armsAssets = [arms1, arms2];
-  let hairAssets = [];
-  let shirtAssets = [shirt1, shirt2, shirt3];
+  let hairAssets = [hair1];
+  let shirtAssets = [shirt1, shirt2, shirt3, shirt4];
   let pantsAssets = [pants1, pants2];
 
 

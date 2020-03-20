@@ -1,3 +1,3 @@
-let STITCH_CONFIG = "leafy-me-yvzes";
+let STITCH_CONFIG = "main-brodv";
 
 export {STITCH_CONFIG}
